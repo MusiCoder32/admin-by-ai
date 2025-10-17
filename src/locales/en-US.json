@@ -1,0 +1,23 @@
+{
+  "layout": {
+    "menuDashboard": "Dashboard",
+    "menuAnalytics": "Analytics",
+    "menuTasks": "Tasks",
+    "menuSettings": "Settings",
+    "menuSupport": "Support",
+    "searchPlaceholder": "Search anything..."
+  },
+  "dashboard": {
+    "welcome": "Welcome back, Admin",
+    "subtitle": "Here is the latest snapshot of the platform performance.",
+    "traffic": "Website Traffic",
+    "conversion": "Conversion Rate",
+    "avgSession": "Avg. Session Duration",
+    "newUsers": "New Users",
+    "recentActivity": "Recent Activity",
+    "performance": "Performance by Channel",
+    "tickets": "Open Tickets",
+    "tasks": "Team Tasks",
+    "viewAll": "View all"
+  }
+}
