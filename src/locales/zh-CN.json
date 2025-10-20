@@ -1,0 +1,31 @@
+{
+  "layout": {
+    "searchPlaceholder": "快速搜索",
+    "profileName": "Dominique Ch.",
+    "profileRole": "人力资源经理",
+    "addWidget": "添加挂件",
+    "menu": {
+      "dashboard": "控制台",
+      "people": "员工",
+      "projects": "项目",
+      "calendar": "日历",
+      "training": "培训",
+      "timesheet": "工时表",
+      "reports": "报表",
+      "administration": "管理",
+      "help": "帮助"
+    },
+    "version": "版本：1.0.0.11"
+  },
+  "dashboard": {
+    "companyFacts": "公司概览",
+    "employees": "员工数量",
+    "statistics": "统计",
+    "projectsByAccount": "按客户划分的项目",
+    "assignedRisks": "已分配风险",
+    "assignedActionItems": "已分配行动项",
+    "noRisks": "暂无风险分配。",
+    "noActions": "暂无行动项分配。",
+    "total": "总计"
+  }
+}
