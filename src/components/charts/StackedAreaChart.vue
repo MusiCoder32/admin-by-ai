@@ -49,11 +49,14 @@ const drawChart = () => {
     .keys(keys)
     .value((d: Record<string, number>, key: string) => d[key] ?? 0)
 
-  const layers = stackedData(dataset)
+  type StackPoint = d3.SeriesPoint<Record<string, number>>
+  type StackSeries = d3.Series<Record<string, number>, string>
+
+  const layers: StackSeries[] = stackedData(dataset)
 
   const maxY =
-    d3.max(layers, (layer: d3.Series<Record<string, number>, string>) =>
-      d3.max(layer, (d: [number, number]) => d[1])
+    d3.max(layers, (layer: StackSeries) =>
+      d3.max(layer, (d: StackPoint) => d[1])
     ) ?? 0
 
   const xScale = d3
@@ -67,10 +70,10 @@ const drawChart = () => {
     .range([height - 40, 40])
 
   const area = d3
-    .area<[number, number]>()
-    .x((_d: [number, number], i: number) => xScale(years[i]) ?? 0)
-    .y0((d: [number, number]) => yScale(d[0]))
-    .y1((d: [number, number]) => yScale(d[1]))
+    .area<StackPoint>()
+    .x((_d: StackPoint, i: number) => xScale(years[i]) ?? 0)
+    .y0((d: StackPoint) => yScale(d[0]))
+    .y1((d: StackPoint) => yScale(d[1]))
     .curve(d3.curveCatmullRom.alpha(0.5))
 
   layers.forEach((layer: d3.Series<Record<string, number>, string>, index: number) => {

@@ -1,5 +1,6 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
+import path from 'node:path'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import UnoCSS from 'unocss/vite'
@@ -12,6 +13,8 @@ import { viteMockServe } from 'vite-plugin-mock'
 
 export default defineConfig(({ mode }) => {
   const enableMock = mode === 'mock'
+
+  const localesPath = fileURLToPath(new URL('./src/locales', import.meta.url))
 
   return {
     plugins: [
@@ -34,7 +37,8 @@ export default defineConfig(({ mode }) => {
       }),
       VueI18nPlugin({
         runtimeOnly: false,
-        include: fileURLToPath(new URL('./src/locales/**', import.meta.url))
+        compositionOnly:false,
+    
       }),
       createSvgIconsPlugin({
         iconDirs: [fileURLToPath(new URL('./src/assets/icons', import.meta.url))],
@@ -44,7 +48,8 @@ export default defineConfig(({ mode }) => {
         mockPath: 'mock',
         localEnabled: enableMock,
         prodEnabled: false
-      })
+        // Cast required because type definition misses localEnabled
+      } as any)
     ],
     resolve: {
       alias: {

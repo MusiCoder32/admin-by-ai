@@ -19,3 +19,6 @@
 15. lodash
 16. typescript
 17. @vitejs/plugin-vue-jsx
+
+## 验证
+创建完成后执行npm run build进行验证

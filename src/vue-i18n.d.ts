@@ -1,8 +1,8 @@
 import 'vue-i18n'
-import type en from './locales/en.json'
+import type { MessageSchema } from './locales'
 
 declare module 'vue-i18n' {
-  export interface DefineLocaleMessage extends typeof en {}
+  export interface DefineLocaleMessage extends MessageSchema {}
   export interface DefineDateTimeFormat {}
   export interface DefineNumberFormat {}
 }

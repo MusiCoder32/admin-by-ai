@@ -5,8 +5,8 @@ import zhCN from './zh-CN.json'
 
 export const i18n = createI18n({
   legacy: false,
-  locale: 'en',
-  fallbackLocale: 'en',
+  locale: 'zh-CN',
+  fallbackLocale: 'zh-CN',
   messages: {
     en,
     'zh-CN': zhCN
