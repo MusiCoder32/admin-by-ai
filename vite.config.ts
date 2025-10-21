@@ -1,6 +1,5 @@
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
-import path from 'node:path'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import UnoCSS from 'unocss/vite'
@@ -13,8 +12,6 @@ import { viteMockServe } from 'vite-plugin-mock'
 
 export default defineConfig(({ mode }) => {
   const enableMock = mode === 'mock'
-
-  const localesPath = fileURLToPath(new URL('./src/locales', import.meta.url))
 
   return {
     plugins: [
@@ -33,12 +30,11 @@ export default defineConfig(({ mode }) => {
       }),
       Components({
         dts: 'components.d.ts',
-        resolvers: [ElementPlusResolver({ importStyle: 'sass' })]
+        resolvers: [ElementPlusResolver({ importStyle: 'css' })]
       }),
       VueI18nPlugin({
         runtimeOnly: false,
-        compositionOnly:false,
-    
+        compositionOnly: false
       }),
       createSvgIconsPlugin({
         iconDirs: [fileURLToPath(new URL('./src/assets/icons', import.meta.url))],
@@ -54,13 +50,6 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url))
-      }
-    },
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@use "element-plus/theme-chalk/src/dark/css-vars.scss" as *;'
-        }
       }
     },
     server: {

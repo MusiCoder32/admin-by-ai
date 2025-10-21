@@ -5,8 +5,8 @@ import router from './router'
 import { i18n } from './locales'
 
 import 'uno.css'
-import './styles/index.scss'
-import 'element-plus/theme-chalk/src/index.scss'
+import './styles/index.css'
+import 'element-plus/dist/index.css'
 import 'virtual:svg-icons-register'
 
 const app = createApp(App)
