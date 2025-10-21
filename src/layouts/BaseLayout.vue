@@ -27,7 +27,7 @@ interface MenuItem {
 
 const menuItems = computed<MenuItem[]>(() => [
   { path: '/dashboard', key: 'dashboard', icon: 'i-carbon-grid' },
-  { path: '/people', key: 'people', icon: 'i-carbon-user-multiple', disabled: true },
+  { path: '/people', key: 'people', icon: 'i-carbon-user-multiple' },
   { path: '/projects', key: 'projects', icon: 'i-carbon-task-approved', disabled: true },
   { path: '/calendar', key: 'calendar', icon: 'i-carbon-calendar', disabled: true },
   { path: '/training', key: 'training', icon: 'i-carbon-book', disabled: true },

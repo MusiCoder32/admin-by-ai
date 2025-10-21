@@ -4,7 +4,7 @@
     "profileName": "Dominique Ch.",
     "profileRole": "人力资源经理",
     "addWidget": "添加挂件",
-  "languageSwitch": "切换语言",
+    "languageSwitch": "切换语言",
     "menu": {
       "dashboard": "控制台",
       "people": "员工",
@@ -28,5 +28,53 @@
     "noRisks": "暂无风险分配。",
     "noActions": "暂无行动项分配。",
     "total": "总计"
+  },
+  "people": {
+    "title": "筛选器",
+    "cards": {
+      "findPerson": "查找员工",
+      "allPeople": "全部员工"
+    },
+    "labels": {
+      "name": "姓名",
+      "cv": "简历",
+      "email": "邮箱地址",
+      "capabilities": "能力",
+      "login": "登录名",
+      "branch": "分支机构",
+      "technology": "技术",
+      "id1c": "1C 编号",
+      "practice": "实践领域",
+      "certificates": "证书",
+      "userType": "用户类型",
+      "courses": "课程",
+      "contractType": "合同类型",
+      "education": "学历"
+    },
+    "cvFilters": {
+      "capability": "能力",
+      "technology": "技术",
+      "certificate": "证书",
+      "course": "课程"
+    },
+    "placeholders": {
+      "search": "搜索...",
+      "select": "请选择...",
+      "specialization": "搜索专业方向"
+    },
+    "toggles": {
+      "userDetails": "显示用户类型、登录名、入职日期、1C 编号",
+      "contactInfo": "显示 Skype、办公室电话、手机、房间号、职位",
+      "currentAssignments": "显示当前任务",
+      "includeTerminated": "包含已离职员工"
+    },
+    "combination": {
+      "and": "AND",
+      "or": "OR"
+    },
+    "buttons": {
+      "clear": "清除",
+      "search": "搜索"
+    }
   }
 }

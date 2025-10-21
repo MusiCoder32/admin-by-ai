@@ -4,7 +4,7 @@
     "profileName": "Dominique Ch.",
     "profileRole": "HR Manager",
     "addWidget": "Add widget",
-  "languageSwitch": "Switch language",
+    "languageSwitch": "Switch language",
     "menu": {
       "dashboard": "Dashboard",
       "people": "People",
@@ -28,5 +28,53 @@
     "noRisks": "There are no risks assigned.",
     "noActions": "There are no action items assigned.",
     "total": "Total"
+  },
+  "people": {
+    "title": "Filter",
+    "cards": {
+      "findPerson": "Find person",
+      "allPeople": "All people"
+    },
+    "labels": {
+      "name": "Name",
+      "cv": "CV",
+      "email": "Email address",
+      "capabilities": "Capabilities",
+      "login": "Login",
+      "branch": "Branch",
+      "technology": "Technology",
+      "id1c": "1C id",
+      "practice": "Practice",
+      "certificates": "Certificates",
+      "userType": "User type",
+      "courses": "Courses",
+      "contractType": "User contract type",
+      "education": "Education"
+    },
+    "cvFilters": {
+      "capability": "Capability",
+      "technology": "Technology",
+      "certificate": "Certificate",
+      "course": "Course"
+    },
+    "placeholders": {
+      "search": "Search...",
+      "select": "Select...",
+      "specialization": "Search for specialization"
+    },
+    "toggles": {
+      "userDetails": "Show User Type, Login, Start Date, 1C Id",
+      "contactInfo": "Show Skype, Office phone, Mobile phone, Room number, Title",
+      "currentAssignments": "Show current assignments",
+      "includeTerminated": "Include terminated employees"
+    },
+    "combination": {
+      "and": "AND",
+      "or": "OR"
+    },
+    "buttons": {
+      "clear": "Clear",
+      "search": "Search"
+    }
   }
 }
