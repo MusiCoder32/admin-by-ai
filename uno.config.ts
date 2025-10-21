@@ -20,7 +20,9 @@ export default defineConfig({
     'i-carbon-search',
     'i-carbon-caret-down',
     'i-carbon-chevron-left',
-    'i-carbon-chevron-right'
+    'i-carbon-chevron-right',
+    'i-carbon-notification',
+    'i-carbon-add'
   ],
   presets: [
     presetUno(),

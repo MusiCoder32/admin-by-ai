@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import StackedAreaChart from '@/components/charts/StackedAreaChart.vue'
-import DonutChart from '@/components/charts/DonutChart.vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const areaSeries = [
   {
@@ -46,9 +46,6 @@ const donutSlices = [
   { name: 'Daimler', value: 7, color: '#00B2A9' }
 ]
 
-const totalEmployees = computed(() =>
-  areaSeries.reduce((sum, series) => sum + series.values[series.values.length - 1].value, 0)
-)
 </script>
 
 <template>
@@ -57,66 +54,74 @@ const totalEmployees = computed(() =>
       <article class="dashboard-card">
         <header class="dashboard-card__header">
           <div>
-            <h2>Company Facts</h2>
-            <p>Employees</p>
-          </div>
-          <div class="card-actions">
-            <i class="i-carbon-chevron-left" />
-            <i class="i-carbon-chevron-right" />
+            <h2>{{ t('dashboard.companyFacts') }}</h2>
+            <p>{{ t('dashboard.employees') }}</p>
           </div>
         </header>
-        <StackedAreaChart :series="areaSeries" />
+        <div class="dashboard-card__chart">
+          <button class="chart-nav chart-nav--left" type="button" aria-label="Previous dataset">
+            <i class="i-carbon-chevron-left" aria-hidden="true" />
+          </button>
+          <StackedAreaChart :series="areaSeries" />
+          <button class="chart-nav chart-nav--right" type="button" aria-label="Next dataset">
+            <i class="i-carbon-chevron-right" aria-hidden="true" />
+          </button>
+        </div>
         <footer class="dashboard-card__footer">
           <div class="legend">
             <span v-for="item in areaSeries" :key="item.name" class="legend__item">
-              <span :style="{ backgroundColor: item.color }"></span>
-              {{ item.name }}
+              <span class="legend__color" :style="{ backgroundColor: item.color }" />
+              <span>{{ item.name }}</span>
             </span>
           </div>
-          <div class="pagination">
-            <span class="active" />
-            <span />
-            <span />
+          <div class="pagination" role="group" aria-label="Dataset pagination">
+            <span class="pagination__dot is-active" />
+            <span class="pagination__dot" />
+            <span class="pagination__dot" />
           </div>
         </footer>
       </article>
 
       <article class="dashboard-card">
         <header class="dashboard-card__header">
-          <h2>Statistics</h2>
-          <div class="card-actions">
-            <i class="i-carbon-chevron-left" />
-            <i class="i-carbon-chevron-right" />
-          </div>
+          <h2>{{ t('dashboard.statistics') }}</h2>
         </header>
-        <DonutChart :slices="donutSlices" />
+        <div class="dashboard-card__chart">
+          <button class="chart-nav chart-nav--left" type="button" aria-label="Previous dataset">
+            <i class="i-carbon-chevron-left" aria-hidden="true" />
+          </button>
+          <DonutChart :slices="donutSlices" />
+          <button class="chart-nav chart-nav--right" type="button" aria-label="Next dataset">
+            <i class="i-carbon-chevron-right" aria-hidden="true" />
+          </button>
+        </div>
         <footer class="dashboard-card__footer">
           <div class="legend legend--wrap">
             <span v-for="slice in donutSlices" :key="slice.name" class="legend__item">
-              <span :style="{ backgroundColor: slice.color }"></span>
-              {{ slice.name }}
+              <span class="legend__color" :style="{ backgroundColor: slice.color }" />
+              <span>{{ slice.name }}</span>
             </span>
           </div>
-          <div class="pagination">
-            <span class="active" />
-            <span />
-            <span />
+          <div class="pagination" role="group" aria-label="Dataset pagination">
+            <span class="pagination__dot is-active" />
+            <span class="pagination__dot" />
+            <span class="pagination__dot" />
           </div>
         </footer>
       </article>
 
       <article class="dashboard-card dashboard-card--empty">
         <header class="dashboard-card__header">
-          <h2>Assigned Risks</h2>
+          <h2>{{ t('dashboard.assignedRisks') }}</h2>
         </header>
-        <div class="empty-state">There are no risks assigned.</div>
+        <div class="empty-state">{{ t('dashboard.noRisks') }}</div>
       </article>
 
       <article class="dashboard-card dashboard-card--empty">
         <header class="dashboard-card__header">
-          <h2>Assigned Action Items</h2>
+          <h2>{{ t('dashboard.assignedActionItems') }}</h2>
         </header>
-        <div class="empty-state">There are no action items assigned.</div>
+        <div class="empty-state">{{ t('dashboard.noActions') }}</div>
       </article>
     </section>
   </div>
@@ -139,11 +144,11 @@ const totalEmployees = computed(() =>
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 24px;
-  border-radius: 14px;
+  padding: 24px 24px 32px;
+  border-radius: 16px;
   background: #ffffff;
-  border: 1px solid #e2e7f2;
-  box-shadow: 0 2px 8px rgba(46, 50, 66, 0.08);
+  border: 1px solid #dee3ee;
+  box-shadow: 0 12px 28px rgba(31, 41, 55, 0.08);
 }
 
 .dashboard-card__header {
@@ -156,6 +161,8 @@ const totalEmployees = computed(() =>
 .dashboard-card__header h2 {
   margin: 0;
   font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.15px;
   font-weight: 500;
   color: #1f2937;
 }
@@ -166,43 +173,67 @@ const totalEmployees = computed(() =>
   color: #8e8e93;
 }
 
-.card-actions {
+.dashboard-card__chart {
+  position: relative;
   display: flex;
-  gap: 8px;
-  color: #8e8e93;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
 }
 
-.card-actions i {
-  font-size: 20px;
+.chart-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+  border: 1px solid #dee3ee;
+  background: #ffffff;
+  color: #8e8e93;
+  box-shadow: 0 8px 24px rgba(31, 41, 55, 0.08);
+  cursor: pointer;
+}
+
+.chart-nav--left {
+  left: 16px;
+}
+
+.chart-nav--right {
+  right: 16px;
 }
 
 .dashboard-card__footer {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
   gap: 12px;
 }
 
 .legend {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 16px;
-  flex-wrap: nowrap;
-}
-
-.legend--wrap {
   flex-wrap: wrap;
 }
 
+.legend--wrap {
+  max-width: 100%;
+}
+
 .legend__item {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   font-size: 14px;
   color: #4f4f4f;
 }
 
-.legend__item span {
+.legend__color {
   display: inline-block;
   width: 12px;
   height: 12px;
@@ -211,18 +242,20 @@ const totalEmployees = computed(() =>
 
 .pagination {
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
 }
 
-.pagination span {
+.pagination__dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: #d1d1d6;
-  display: inline-block;
+  transition: background-color 0.2s ease;
 }
 
-.pagination .active {
+.pagination__dot.is-active {
   background: #2f80ed;
 }
 

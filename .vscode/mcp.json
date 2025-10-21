@@ -1,9 +1,19 @@
 {
-    "inputs": [],
-    "servers": {
-        "figma": {
-            "url": "https://mcp.figma.com/mcp",
-            "type": "http"
-        }
+  "inputs": [
+    {
+      "type": "env",
+      "name": "FIGMA_PERSONAL_ACCESS_TOKEN",
+      "description": "Figma PAT with file read scope"
     }
+  ],
+  "servers": {
+    "figma": {
+      "url": "https://mcp.figma.com/mcp",
+      "type": "http",
+      "defaultHeaders": {
+        "Authorization": "Bearer ${FIGMA_PERSONAL_ACCESS_TOKEN}"
+        // or "X-Figma-Token": "${FIGMA_PERSONAL_ACCESS_TOKEN}"
+      }
+    }
+  }
 }
